@@ -6,9 +6,4 @@ public class Laser : Weapon
     {
         print("Выстрел лазера");
     }
-
-    private void Update()
-    {
-
-    }
 }

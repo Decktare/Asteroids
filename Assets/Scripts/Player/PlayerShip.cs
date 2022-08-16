@@ -5,7 +5,7 @@ public class PlayerShip : MonoBehaviour
 {
     private Weapon firstWeapon;
     private Weapon secondWeapon;
-    private Rigidbody2D shipRigidBody;
+    private Rigidbody2D shipRigidbody;
 
     private void Start()
     {
@@ -37,12 +37,12 @@ public class PlayerShip : MonoBehaviour
     {
         firstWeapon = GetComponent<Cannon>();
         secondWeapon = GetComponent<Laser>();
-        shipRigidBody = GetComponent<Rigidbody2D>();
+        shipRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void ShipMoving()
     {
-        shipRigidBody.AddForce(GetDirestionToLookAt(), ForceMode2D.Force);
+        shipRigidbody.AddForce(GetDirestionToLookAt(), ForceMode2D.Force);
     }
 
     private void ShipRotation()
