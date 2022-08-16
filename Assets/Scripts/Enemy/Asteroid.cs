@@ -3,8 +3,11 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     public readonly float minSize = 0.5f;
-    public readonly float maxSize = 2.0f;
-    public float size = 1.0f;
+    public readonly float maxSize = 2.0f;    
+    public float size = 1.0f;    
+    public float maxLifetime = 30.0f;
+
+    private float speed = 20.0f;
 
     private SpriteRenderer asteroidSprite;
     private Rigidbody2D asteroidRigidbody;
@@ -23,5 +26,12 @@ public class Asteroid : MonoBehaviour
         transform.localScale = Vector3.one * size;
 
         asteroidRigidbody.mass = size;
+    }
+
+    public void SetTrajectory(Vector2 direction)
+    {
+        asteroidRigidbody.AddForce(direction * speed);
+
+        Destroy(gameObject, maxLifetime);
     }
 }
