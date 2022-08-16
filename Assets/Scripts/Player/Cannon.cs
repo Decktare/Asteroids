@@ -3,7 +3,6 @@ public class Cannon : Weapon
     public readonly WeaponType weaponType = WeaponType.Cannon;
 
     public Bullet bulletPrefab;
-
     public override void Fire()
     {
         print("Выстре пушки");

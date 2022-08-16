@@ -1,6 +1,4 @@
-
 using UnityEngine;
-
 public class PlayerShip : MonoBehaviour
 {
     private Weapon firstWeapon;
@@ -11,7 +9,6 @@ public class PlayerShip : MonoBehaviour
     {
         Initialization();
     }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -24,7 +21,6 @@ public class PlayerShip : MonoBehaviour
         }
         ShipRotation();
     }
-
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -32,24 +28,20 @@ public class PlayerShip : MonoBehaviour
             ShipMoving();
         }
     }
-
     private void Initialization()
     {
         firstWeapon = GetComponent<Cannon>();
         secondWeapon = GetComponent<Laser>();
         shipRigidbody = GetComponent<Rigidbody2D>();
     }
-
     private void ShipMoving()
     {
         shipRigidbody.AddForce(GetDirestionToLookAt(), ForceMode2D.Force);
     }
-
     private void ShipRotation()
     {
         transform.up = GetDirestionToLookAt();
     }
-
     private Vector2 GetDirestionToLookAt()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
