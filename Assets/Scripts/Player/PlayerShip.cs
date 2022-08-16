@@ -1,6 +1,7 @@
 using UnityEngine;
 public class PlayerShip : MonoBehaviour
 {
+    public static Vector2 position;
     private Weapon firstWeapon;
     private Weapon secondWeapon;
     private Rigidbody2D shipRigidbody;
@@ -20,6 +21,7 @@ public class PlayerShip : MonoBehaviour
             secondWeapon.Fire();
         }
         ShipRotation();
+        Position();
     }
     private void FixedUpdate()
     {
@@ -33,6 +35,10 @@ public class PlayerShip : MonoBehaviour
         firstWeapon = GetComponent<Cannon>();
         secondWeapon = GetComponent<Laser>();
         shipRigidbody = GetComponent<Rigidbody2D>();
+    }
+    private void Position()
+    {
+        position = transform.position;
     }
     private void ShipMoving()
     {
@@ -51,5 +57,15 @@ public class PlayerShip : MonoBehaviour
             mousePosition.y - transform.position.y
             );
         return directionToLookAt;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            shipRigidbody.velocity = Vector3.zero;
+            shipRigidbody.angularVelocity = 0.0f;
+
+            gameObject.SetActive(false);
+        }
     }
 }
