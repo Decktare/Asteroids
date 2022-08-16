@@ -1,8 +1,11 @@
 public class Laser : Weapon
 {
-    public readonly WeaponType weaponType = WeaponType.Laser;
+    public override WeaponType weaponType => WeaponType.Laser;
+
+    public LaserRay laserRayPrefab;    
     public override void Fire()
     {
-        print("Выстрел лазера");
+        LaserRay laserRay = Instantiate(laserRayPrefab, transform.position, transform.rotation);
+        laserRay.Shooting();
     }
 }

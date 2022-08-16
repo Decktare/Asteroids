@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &224033652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224033654}
+  - component: {fileID: 224033653}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &224033653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224033652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e74f5dc83edbd42ba453834136e6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 2
+  trajectoryVariance: 15
+  spawnAmount: 1
+  asteroidPrefab: {fileID: -6314479145798475511, guid: e0a2aac993a96214eb83f6d9b3450597, type: 3}
+--- !u!4 &224033654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224033652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92283d478d56df64d8eac96e924c0fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserRayPrefab: {fileID: 4117956278324178410, guid: 82e00f270af495c4ea966900ad5d5979, type: 3}
 --- !u!114 &1796003320
 MonoBehaviour:
   m_ObjectHideFlags: 0
