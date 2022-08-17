@@ -11,9 +11,8 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] private Asteroid asteroidPrefab;
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        StartSpawn();
     }
-
     private void Spawn()
     {
         for(int i = 0; i < spawnAmount; i++)
@@ -28,5 +27,14 @@ public class AsteroidSpawner : MonoBehaviour
             asteroid.size = Random.Range(asteroid.minSize, asteroid.maxSize);
             asteroid.SetTrajectory(rotation * -spawnDirection);
         }
+    }
+    public void StopSpawn()
+    {
+        CancelInvoke();
+    }
+
+    public void StartSpawn()
+    {
+        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
 }

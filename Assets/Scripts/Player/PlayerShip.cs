@@ -1,6 +1,7 @@
 using UnityEngine;
 public class PlayerShip : MonoBehaviour
 {
+
     public static Vector2 position;
     private Weapon firstWeapon;
     private Weapon secondWeapon;
@@ -66,6 +67,8 @@ public class PlayerShip : MonoBehaviour
             shipRigidbody.angularVelocity = 0.0f;
 
             gameObject.SetActive(false);
+
+            GameOver.PlayerDied();
         }
     }
 }

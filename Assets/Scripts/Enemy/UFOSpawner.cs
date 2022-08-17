@@ -11,7 +11,7 @@ public class UFOSpawner : MonoBehaviour
     [SerializeField] private UFO ufoPrefab;
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        StartSpawn();
     }
 
     private void Spawn()
@@ -26,5 +26,13 @@ public class UFOSpawner : MonoBehaviour
 
             UFO UFO = Instantiate(ufoPrefab, spawnPoint, rotation);
         }
+    }
+    public void StopSpawn()
+    {
+        CancelInvoke();
+    }
+    public void StartSpawn()
+    {
+        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
 }

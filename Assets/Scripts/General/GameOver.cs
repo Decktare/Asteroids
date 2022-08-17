@@ -1,16 +1,35 @@
 using UnityEngine;
 public static class GameOver
 {
-    private static PlayerShip playerShip = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShip>();
-
+    private static GameObject[] enemies;
     public static void PlayerDied()
     {
-
+        Access.gameOverPanelStatic.SetActive(true);
+        Access.spawnerStatic.GetComponent<AsteroidSpawner>().StopSpawn();
+        Access.spawnerStatic.GetComponent<UFOSpawner>().StopSpawn();
+        Access.spawnerStatic.SetActive(false);        
+        DestroyEnemys();
     }
 
-    private static void Respawn()
+    public static void Respawn()
     {
-        playerShip.transform.position = Vector3.zero;
-        playerShip.gameObject.SetActive(true);
+        Access.playerShipStatic.transform.position = Vector3.zero;
+        Access.playerShipStatic.SetActive(true);
+        Access.gameOverPanelStatic.SetActive(false);
+        Access.spawnerStatic.SetActive(true);
+        Access.spawnerStatic.GetComponent<AsteroidSpawner>().StartSpawn();
+        Access.spawnerStatic.GetComponent<UFOSpawner>().StartSpawn();
+    }
+
+    private static void DestroyEnemys()
+    {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            Object.Destroy(enemy);
+        }
+
+        enemies = null;
     }
 }
