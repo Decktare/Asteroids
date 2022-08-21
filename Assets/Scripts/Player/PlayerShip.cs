@@ -5,7 +5,7 @@ public class PlayerShip : MonoBehaviour
     public static Vector2 position;
     private Weapon firstWeapon;
     private Weapon secondWeapon;
-    private Rigidbody2D shipRigidbody;
+    private Rigidbody2D shipRigidbody;    
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class PlayerShip : MonoBehaviour
         position = transform.position;
     }
     private void ShipMoving()
-    {
+    {        
         shipRigidbody.AddForce(GetDirestionToLookAt(), ForceMode2D.Force);
     }
     private void ShipRotation()

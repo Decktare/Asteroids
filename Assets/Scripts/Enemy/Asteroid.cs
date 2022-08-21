@@ -3,13 +3,15 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     public readonly float minSize = 0.5f;
-    public readonly float maxSize = 2.0f;    
-    public float size = 1.0f;    
+    public readonly float maxSize = 2.0f;
+    public float size = 1.0f;
     public float maxLifetime = 30.0f;
 
     private int chipCount;
     private readonly int chipCountMax = 5;
-    private float speed = 20.0f;
+    private float speed = 0.0005f;
+    private float multiply = 10.0f;
+    private Vector2 trajectory;
 
     private SpriteRenderer asteroidSprite;
     private Rigidbody2D asteroidRigidbody;
@@ -30,9 +32,19 @@ public class Asteroid : MonoBehaviour
         asteroidRigidbody.mass = size;
         chipCount = Random.Range(2, chipCountMax);
     }
+    private void Update()
+    {
+        Moving();
+    }
+    private void Moving()
+    {
+        if (trajectory != null) transform.position = Vector2.Lerp(transform.position, trajectory, speed);
+    }
     public void SetTrajectory(Vector2 direction)
     {
-        asteroidRigidbody.AddForce(direction * speed);
+        trajectory = direction;
+
+        //asteroidRigidbody.AddForce(direction * speed);
 
         Destroy(gameObject, maxLifetime);
     }
@@ -57,6 +69,6 @@ public class Asteroid : MonoBehaviour
 
         Asteroid chip = Instantiate(this, position, transform.rotation);
         chip.size = this.size * 0.5f;
-        chip.SetTrajectory(Random.insideUnitCircle.normalized);
+        chip.SetTrajectory(Random.insideUnitCircle.normalized * multiply);
     }
 }
